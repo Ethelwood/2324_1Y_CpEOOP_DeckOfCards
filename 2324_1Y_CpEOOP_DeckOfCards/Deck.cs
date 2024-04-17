@@ -9,6 +9,7 @@ namespace _2324_1Y_CpEOOP_DeckOfCards
     internal class Deck
     {
         private List<Card> _deck = new List<Card> ();
+        private Random _rnd = new Random ();
 
         public Deck()
         {
@@ -19,6 +20,18 @@ namespace _2324_1Y_CpEOOP_DeckOfCards
                     _deck.Add(new Card(s, v));
                 }
             }
+
+            Console.WriteLine("Deck has been initialized... Starting to shuffle...");
+
+            shuffle();
+            shuffle();
+            shuffle();
+            shuffle();
+            shuffle();
+            shuffle();
+            shuffle();
+
+            Console.WriteLine("Shuffle complete...");
         }
 
         public int getCardCount()
@@ -33,5 +46,38 @@ namespace _2324_1Y_CpEOOP_DeckOfCards
             return single;
         }
 
+        public Card[] draw(int num)
+        {
+            Card[] temp = new Card[num];
+
+            for(int x = 0; x < temp.Length; x++)
+                if(_deck.Count > 0)
+                    temp[x] = draw();
+
+            return temp;
+        }
+
+        public void shuffle()
+        {
+            int pos = 0;
+            int num = 0;
+            List<Card> temp = new List<Card>();
+
+            while(_deck.Count > 0)
+            {
+                pos = _rnd.Next(_deck.Count);
+                num = _rnd.Next(5) + 1;
+
+                while(pos < _deck.Count && num > 0)
+                {
+                    temp.Add(_deck[pos]);
+                    _deck.RemoveAt(pos);
+                    num--;
+                }
+            }
+
+            _deck = new List<Card>(temp);
+            temp.Clear();
+        }
     }
 }
