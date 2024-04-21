@@ -49,15 +49,31 @@ namespace _2324_1Y_CpEOOP_DeckOfCards
                     dCard[1] = "Ace";
                     break;
                 case 1:
+                    dCard[1] = "Two";
+                    break;
                 case 2:
+                    dCard[1] = "Three";
+                    break;
                 case 3:
+                    dCard[1] = "Four";
+                    break;
                 case 4:
+                    dCard[1] = "Five";
+                    break;
                 case 5:
+                    dCard[1] = "Six";
+                    break;
                 case 6:
+                    dCard[1] = "Seven";
+                    break;
                 case 7:
+                    dCard[1] = "Eight";
+                    break;
                 case 8:
+                    dCard[1] = "Nine";
+                    break;
                 case 9:
-                    dCard[1] = (value + 1).ToString();
+                    dCard[1] = "Ten";
                     break;
                 case 10:
                     dCard[1] = "Jack";

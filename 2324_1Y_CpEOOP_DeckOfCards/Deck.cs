@@ -20,18 +20,10 @@ namespace _2324_1Y_CpEOOP_DeckOfCards
                     _deck.Add(new Card(s, v));
                 }
             }
-
-            Console.WriteLine("Deck has been initialized... Starting to shuffle...");
-
-            shuffle();
-            shuffle();
-            shuffle();
-            shuffle();
-            shuffle();
-            shuffle();
-            shuffle();
-
-            Console.WriteLine("Shuffle complete...");
+            for(int i = 0; i < 7; i++)
+            {
+                shuffle();
+            }
         }
 
         public int getCardCount()
