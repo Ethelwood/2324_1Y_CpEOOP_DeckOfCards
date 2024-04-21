@@ -58,7 +58,7 @@ namespace _2324_1Y_CpEOOP_DeckOfCards
 
         public void checkAce()
         {
-            for(int i = 0; i < _hand.Count; i++)
+            for(int i = _hand.Count - 1; i < _hand.Count; i++)
             {
                 if (_hand[i].getCard()[1] == 0)
                 {
@@ -80,28 +80,34 @@ namespace _2324_1Y_CpEOOP_DeckOfCards
 
         public void drawAgain(Deck _deck)
         {
-            if (getHandValue() < 21)
+            while (getHandValue() < 21)
             {
                 Console.Write("Draw another? (Y/N): ");
                 string ans = Console.ReadLine().ToUpper();
                 Console.WriteLine();
                 if (ans == "N")
                 {
-                    Console.WriteLine("You thought we were playing regular Blackjack, but you're in my house, betch! You play it safe, you LOSE!\n");
+                    Console.WriteLine("You thought we were playing regular Blackjack, but you're in my house now! You play it safe, and you get nothing!\n");
+                    displayAllCards();
                     Console.WriteLine();
+                    break;
                 }
                 else if (ans == "Y")
                 {
+                    if(_deck.getCardCount() == 0)
+                    {
+                        Console.WriteLine("No more cards.");
+                        System.Environment.Exit(0);
+                    }
                     drawCards(_deck.draw(1));
+                    displayAllCards();
                     checkAce();
                     Console.WriteLine();
                 }
                 else Console.WriteLine("Invalid input!");
-                displayAllCards();
-                Console.WriteLine();
+            }
                 Console.WriteLine($"{getPlayerName()} has a hand value of {getHandValue()}");
                 Console.WriteLine();
-            }
         }
 
         public void checkWin()

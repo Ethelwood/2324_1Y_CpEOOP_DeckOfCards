@@ -12,7 +12,7 @@ namespace _2324_1Y_CpEOOP_DeckOfCards
         static void Main(string[] args)
         {
             Deck myDeck = new Deck();
-            //int[] tempCard = new int[] { };
+
             Hand p1 = new Hand("Arvin");
 
             Console.WriteLine($"Sup, {p1.getPlayerName()}! Sit down, we're playing Blackjack!: ");
@@ -29,7 +29,7 @@ namespace _2324_1Y_CpEOOP_DeckOfCards
                 p1.checkAce();
                 Console.WriteLine($"{p1.getPlayerName()} has a hand value of {p1.getHandValue()}");
                 Console.WriteLine();
-                while(p1.getHandValue() < 21) p1.drawAgain(myDeck);
+                p1.drawAgain(myDeck);
 
                 p1.checkWin();
 
@@ -49,6 +49,11 @@ namespace _2324_1Y_CpEOOP_DeckOfCards
                     
                     else if (stillplaying == "Y")
                     {
+                        if(myDeck.getCardCount() == 0)
+                        {
+                            Console.WriteLine("No more cards. Game Over.");
+                            Console.ReadKey();
+                        }
                         Console.WriteLine("Alright. Let's continue.");
                         Console.WriteLine();
                         ipvalid = 0;
